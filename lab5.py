@@ -28,9 +28,11 @@ splitter = RecursiveCharacterTextSplitter(
 
 chunks = splitter.split_documents(documents)
 
-# Embeddings
 embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
+    model_name="sentence-transformers/all-MiniLM-L6-v2",
+    model_kwargs={
+        "local_files_only": True
+    }
 )
 
 # Vector Database
